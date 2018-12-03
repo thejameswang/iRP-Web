@@ -49,15 +49,14 @@ router.get('/home', function(req,res,next) {
 })
 
 router.get('/home/:id', function(req,res,next) {
-  let adventure = {}
-
+  // let adventure = {}
+  // let donations = []
   Location.findById(req.params.id)
-  .exec(function(err, location) {
-    adventure = location
-  })
-  Donation.find({location:req.params.id})
-  .exec(function(err, donations) {
-    res.render('locationScreen', {adventure, donations})
+  .exec(function(err, adventure) {
+    Donation.find({location:req.params.id})
+    .exec(function(err, donations) {
+      res.render('locationScreen', {adventure, donations})
+    })
   })
 })
 
