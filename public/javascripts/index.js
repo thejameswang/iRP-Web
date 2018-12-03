@@ -1,4 +1,4 @@
-$('#elem').popover()
+// $('#elem').popover()
 
 
 // $(function(){
