@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">iRP</a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="/">Logout</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="locationScreen">
+  <h1>Name: {{adventure.name}}</h1>
+  <h2>Latitude: {{adventure.latitude}}</h2>
+  <h2>Longitude: {{adventure.longitude}}</h2>
+  <h2>Full Address: {{adventure.full_address}}</h2>
+  <h2>Store Type: {{adventure.type}}</h2>
+  <h2>Phone: {{adventure.phone}}</h2>
+  <h2>Website: {{adventure.website}}</h2>
+
+  <h3>Donations:</h3>
+  <ul>
+    {{#each donations}}
+      <div class="donation">
+        <li>Donation Name: {{short_description}}</li>
+        <li>Description: {{full_description}}</li>
+        <li>Category: {{category}}</li>
+        <li>Value: {{value}}</li>
+        <img src="{{picture}}" alt="Picture">
+      </div>
+    {{/each}}
+  </ul>
+  <!-- Big modal -->
+  <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm2">Donate</button>
+
+  <div class="modal fade bs-example-modal-sm2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">{{火}}</h4>
+        </div>
+        <form id="myForm" method="post">
+          <div class="modal-body">
+            <h4>Add Donation</h4>
+            <div class="form-group">
+              <label for="short_description">Donation Item</label>
+              <input type="text" class="form-control" name="short_description" id="short_description" placeholder="Enter Name of Donation Item" required>
+            </div>
+            <div class="form-group">
+              <label for="full_description">Description</label>
+              <input type="text" class="form-control" name="full_description" id="full_description" placeholder="Enter Description" required>
+            </div>
+            <div class="form-group">
+              <label for="value">Estimated Value of Item</label>
+              <input pattern="\d?\d?\d\.\d\d" maxlength=6 size=6 class="form-control" name="value" id="value" placeholder="XXX.XX" required>
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="category">Category</label>
+                </div>
+                <select class="custom-select" id="category" required name="categorypicker">
+                  <option selected>Choose...</option>
+                  <option value="Clothing">Clothing</option>
+                  <option value="Hat">Hat</option>
+                  <option value="Kitchen">Kitchen</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Household">Household</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="comments">Comments</label>
+              <input type="text" class="form-control" name="comments" id="comments" placeholder="Enter Comment">
+            </div>
+            <div class="form-group">
+              <label for="picture">Picture</label>
+              <input type="text" class="form-control" name="picture" id="picture" placeholder="Enter Picture URL source">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
