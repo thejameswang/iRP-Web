@@ -90,7 +90,7 @@ router.post('/home/:id', function(req,res,next) {
   // })
 })
 
-router.post('/home', function(req, res, next) {
+router.post('/', function(req, res, next) {
   let email = req.body.email.toLowerCase();
   let password = req.body.password.toLowerCase();
   let usertype = req.body.usertypepicker;
@@ -105,6 +105,7 @@ router.post('/home', function(req, res, next) {
       console.log(err);
       res.render('index', {title: 'Could not find user. Please register'})
     } else {
+      // conso
       if (res2.password === password) {
         res.redirect('/home')
       } else {
